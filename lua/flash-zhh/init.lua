@@ -5,7 +5,7 @@ local M = {}
 
 function M.jump(opts)
 	opts = vim.tbl_deep_extend("force", {
-		labels = "asdfghjklqwertyuiopzxcvbnm",
+		labels = "ASDFGHJKLQWERTYUIOPZXCVBNM",
 		search = {
 			mode = M._zh_mode,
 		},
