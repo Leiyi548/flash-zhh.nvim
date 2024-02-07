@@ -8,6 +8,8 @@ import csv
 
 output_file_01 = open('./output/虎码-output01.txt', 'w', encoding='utf-8')
 output_file_02 = open('./output/虎码-output02.txt', 'w', encoding='utf-8')
+output_file_03 = open('./output/虎码-output03.txt', 'w', encoding='utf-8')
+output_file_04 = open('./output/虎码-output04.txt', 'w', encoding='utf-8')
 # 读取 CSV 文件
 with open('./asset/虎码单字词库.csv', newline='', encoding='utf-8') as csvfile:
   reader = csv.reader(csvfile)
@@ -24,9 +26,20 @@ with open('./asset/虎码单字词库.csv', newline='', encoding='utf-8') as csv
           # 写入到输出文件中
           output_file_01.write(transformed_row)
         else:
-          transformed_row = '["{}"] = [[\\%({}\\|[{}]\\)]],\n'.format(first_element, first_element, second_element)
-          # 写入到输出文件中
-          output_file_02.write(transformed_row)
+          if len(first_element) == 2:
+            transformed_row = '["{}"] = [[\\%({}\\|[{}]\\)]],\n'.format(first_element, first_element, second_element)
+            # 写入到输出文件中
+            output_file_02.write(transformed_row)
+          elif len(first_element) == 3:
+            transformed_row = '["{}"] = [[\\%({}\\|[{}]\\)]],\n'.format(first_element, first_element, second_element)
+            # 写入到输出文件中
+            output_file_03.write(transformed_row)
+          elif len(first_element) == 4:
+            transformed_row = '["{}"] = [[\\%({}\\|[{}]\\)]],\n'.format(first_element, first_element, second_element)
+            # 写入到输出文件中
+            output_file_04.write(transformed_row)
 
 output_file_01.close()
 output_file_02.close()
+output_file_03.close()
+output_file_04.close()
