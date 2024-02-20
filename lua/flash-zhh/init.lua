@@ -10,8 +10,12 @@ function M.jump(opts)
 		search = {
 			mode = M._zh_mode,
 		},
+		remote_op = {
+			restore = true,
+			motion = true,
+		},
 		-- 如果有 continue，那么上次的搜索还在，就继续上次搜索。
-		continue  = false
+		continue = false,
 	}, opts or {})
 	flash.jump(opts)
 end
@@ -34,18 +38,18 @@ function M._zh_mode(str)
 			-- 那么我就是输入 je
 			-- regexs[2] = [[\%(je\|[他]\)]]
 			-- 就是区配 je 或 他
-			regexs[#regexs + 1] = zhh.char2patterns[string.sub(str,1,2)]
+			regexs[#regexs + 1] = zhh.char2patterns[string.sub(str, 1, 2)]
 			print(vim.inspect(regexs))
 		end
 		if string.len(str) == 3 then
-			regexs[#regexs + 1] = zhh.char3patterns[string.sub(str,1,3)]
+			regexs[#regexs + 1] = zhh.char3patterns[string.sub(str, 1, 3)]
 			print(vim.inspect(regexs))
 		end
 		if string.len(str) == 4 then
-			regexs[#regexs + 1] = zhh.char4patterns[string.sub(str,1,4)]
+			regexs[#regexs + 1] = zhh.char4patterns[string.sub(str, 1, 4)]
 			print(vim.inspect(regexs))
 		end
-		str = string.sub(str,5)
+		str = string.sub(str, 5)
 		-- 如果超过五个就退出 flash-zhh.nvim
 	end
 	if string.len(str) == 1 then
