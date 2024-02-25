@@ -38,15 +38,15 @@ function M._zh_mode(str)
 			-- 那么我就是输入 je
 			-- regexs[2] = [[\%(je\|[他]\)]]
 			-- 就是区配 je 或 他
-			regexs[#regexs + 1] = zhh.char2patterns[string.sub(str, 1, 2)]
+			regexs[#regexs + 1] = zhh.patterns[string.sub(str, 1, 2)]
 			print(vim.inspect(regexs))
 		end
 		if string.len(str) == 3 then
-			regexs[#regexs + 1] = zhh.char3patterns[string.sub(str, 1, 3)]
+			regexs[#regexs + 1] = zhh.patterns[string.sub(str, 1, 3)]
 			print(vim.inspect(regexs))
 		end
 		if string.len(str) == 4 then
-			regexs[#regexs + 1] = zhh.char4patterns[string.sub(str, 1, 4)]
+			regexs[#regexs + 1] = zhh.patterns[string.sub(str, 1, 4)]
 			print(vim.inspect(regexs))
 		end
 		str = string.sub(str, 5)
@@ -55,7 +55,7 @@ function M._zh_mode(str)
 	if string.len(str) == 1 then
 		-- #regexs 代表的是长度
 		-- 这个时候 #regexs 代表是0，那么 #regexs + 1 = 1
-		regexs[#regexs + 1] = zhh.char1patterns[str]
+		regexs[#regexs + 1] = zhh.patterns[str]
 		print(vim.inspect(regexs))
 		-- 假如区配 “我”，注意 lua 数组是从 1 开始
 		-- regexs[1] = [[\%([t我]\)]]
