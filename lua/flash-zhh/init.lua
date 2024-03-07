@@ -39,15 +39,15 @@ function M._zh_mode(str)
 			-- regexs[2] = [[\%(je\|[他]\)]]
 			-- 就是区配 je 或 他
 			regexs[#regexs + 1] = zhh.patterns[string.sub(str, 1, 2)]
-			print(vim.inspect(regexs))
+			vim.notify(vim.inspect(regexs))
 		end
 		if string.len(str) == 3 then
 			regexs[#regexs + 1] = zhh.patterns[string.sub(str, 1, 3)]
-			print(vim.inspect(regexs))
+			vim.notify(vim.inspect(regexs))
 		end
 		if string.len(str) == 4 then
 			regexs[#regexs + 1] = zhh.patterns[string.sub(str, 1, 4)]
-			print(vim.inspect(regexs))
+			vim.notify(vim.inspect(regexs))
 		end
 		str = string.sub(str, 5)
 		-- 如果超过五个就退出 flash-zhh.nvim
