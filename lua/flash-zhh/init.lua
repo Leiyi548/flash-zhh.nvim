@@ -1,6 +1,5 @@
 local flash = require("flash")
 local zhh = require("flash-zhh.zhh")
-local state = require("flash").state
 
 local M = {}
 
@@ -11,8 +10,8 @@ function M.jump(opts)
 			mode = M._zh_mode,
 		},
 		remote_op = {
-			restore = true,
-			motion = true,
+			restore = false,
+			motion = false,
 		},
 		-- 如果有 continue，那么上次的搜索还在，就继续上次搜索。
 		continue = false,
@@ -21,6 +20,7 @@ function M.jump(opts)
 end
 
 function M._zh_mode(str)
+	require("noice").cmd("dismiss")
 	local regexs = {}
 	-- while string.len(str) > 3 then
 	-- 	-- 当我们输入4个字符的时候，agti → 装
@@ -39,15 +39,24 @@ function M._zh_mode(str)
 			-- regexs[2] = [[\%(je\|[他]\)]]
 			-- 就是区配 je 或 他
 			regexs[#regexs + 1] = zhh.patterns[string.sub(str, 1, 2)]
-			vim.notify(vim.inspect(regexs))
+			vim.notify(vim.inspect(regexs), vim.log.levels.INFO, {
+				icon = "🐯",
+				title = "虎码",
+			})
 		end
 		if string.len(str) == 3 then
 			regexs[#regexs + 1] = zhh.patterns[string.sub(str, 1, 3)]
-			vim.notify(vim.inspect(regexs))
+			vim.notify(vim.inspect(regexs), vim.log.levels.INFO, {
+				icon = "🐯",
+				title = "虎码",
+			})
 		end
 		if string.len(str) == 4 then
 			regexs[#regexs + 1] = zhh.patterns[string.sub(str, 1, 4)]
-			vim.notify(vim.inspect(regexs))
+			vim.notify(vim.inspect(regexs), vim.log.levels.INFO, {
+				icon = "🐯",
+				title = "虎码",
+			})
 		end
 		str = string.sub(str, 5)
 		-- 如果超过五个就退出 flash-zhh.nvim
@@ -56,7 +65,10 @@ function M._zh_mode(str)
 		-- #regexs 代表的是长度
 		-- 这个时候 #regexs 代表是0，那么 #regexs + 1 = 1
 		regexs[#regexs + 1] = zhh.patterns[str]
-		print(vim.inspect(regexs))
+		vim.notify(vim.inspect(regexs), vim.log.levels.INFO, {
+			icon = "🐯",
+			title = "虎码",
+		})
 		-- 假如区配 “我”，注意 lua 数组是从 1 开始
 		-- regexs[1] = [[\%([t我]\)]]
 		-- 就是区配 t 或 我
