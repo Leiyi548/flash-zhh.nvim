@@ -5,7 +5,8 @@ local M = {}
 
 function M.jump(opts)
 	opts = vim.tbl_deep_extend("force", {
-		labels = "123456789;,.[]",
+		-- labels = "123456789;,.[]",
+		labels = "ASDFGHJKLQWERTYUIOPZXCVBNM",
 		search = {
 			mode = M._zh_mode,
 		},
@@ -23,15 +24,26 @@ end
 
 function M._zh_mode(str)
 	require("noice").cmd("dismiss")
-	local regexs = {}
-	-- #regexs 代表的是长度
-	-- 这个时候 #regexs 代表是0，那么 #regexs + 1 = 1
-	regexs[#regexs + 1] = zhh.patterns[str]
-	local ret = table.concat(regexs)
-	vim.notify(vim.inspect(ret), vim.log.levels.INFO, {
-		icon = "🐯",
-		title = "虎码",
-	})
+	local ret = zhh.patterns[str]
+	if #str > 4 then
+		vim.notify("虎码搜索字符超过 4 个字符", vim.log.levels.INFO, {
+			icon = "🐯",
+			title = "虎码单字",
+		})
+		return
+	else
+		if ret == nil then
+			vim.notify("没有这个字", vim.log.levels.INFO, {
+				icon = "🐯",
+				title = "虎码单字",
+			})
+			return
+		end
+		vim.notify(ret, vim.log.levels.INFO, {
+			icon = "🐯",
+			title = "虎码单字",
+		})
+	end
 	return ret
 end
 
