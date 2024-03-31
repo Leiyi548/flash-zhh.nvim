@@ -1,5 +1,5 @@
 local M = {}
-local log = require("flash-zhh.dev").log
+-- local log = require("flash-zhh.dev").log
 M.__index = M
 
 function M.new(state)
@@ -42,22 +42,22 @@ function M:skip1(win, labels)
 	local prefix = self.state.pattern.pattern
 	for _, match in ipairs(self.state.results) do
 		if match.win == win then
-			log.debug("⏬⏬skip⏬⏬")
-			log.debug("prefix:" .. prefix)
+			-- log.debug("⏬⏬skip⏬⏬")
+			-- log.debug("prefix:" .. prefix)
 			local buf = vim.api.nvim_win_get_buf(match.win)
 			local start_line, end_line = match.pos[1], match.end_pos[1]
 			local lines = vim.api.nvim_buf_get_lines(buf, start_line - 1, end_line, false)
 			local start_col, end_col = match.pos[2] + 1, match.end_pos[2] + 2
 			local line = lines[1]
-			log.debug("line:" .. line)
+			-- log.debug("line:" .. line)
 			local current_string = string.sub(line, start_col, end_col + 4)
-			log.debug("current_string:" .. current_string)
+			-- log.debug("current_string:" .. current_string)
 			local py = zhhcode.getZhhCode(current_string, "")
-			log.debug("py:" .. py)
+			-- log.debug("py:" .. py)
 			local prefix_len = string.len(prefix)
 			local char = string.sub(py, prefix_len + 1, prefix_len + 1)
-			log.debug("char:" .. char)
-			log.debug("⏫⏫skip⏫⏫")
+			-- log.debug("char:" .. char)
+			-- log.debug("⏫⏫skip⏫⏫")
 			labels = vim.tbl_filter(function(c)
 				-- when ignorecase is set, we need to skip
 				-- both the upper and lower case labels
