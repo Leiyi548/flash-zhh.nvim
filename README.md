@@ -20,7 +20,8 @@ return {
 		"Leiyi548/flash-zhh.nvim",
 		event = "VeryLazy",
 		dependencies = {
-      "folke/flash.nvim",
+      -- 一定要用我这个 fork 的 flash
+      "Leiyi548/flash.nvim",
       -- 不是必须,当你需要调试这个插件,可以启用,然后把 log.debug 注释取消
       -- "nvim-lua/plenary.nvim"
     },
