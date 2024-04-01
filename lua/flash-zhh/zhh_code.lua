@@ -1,4 +1,4 @@
-local log = require("flash-zh.dev").log
+-- local log = require("flash-zhh.dev").log
 local zhh_reverse = require("flash-zhh.zhh_reverse")
 local M = {}
 local cclib = {
@@ -52,13 +52,13 @@ end
 
 function M.getZhhCode(chars, separator)
 	separator = separator or " "
-	log.debug("===start zhhcode===")
-	log.debug("chars:" .. chars)
+	-- log.debug("===start zhhcode===")
+	-- log.debug("chars:" .. chars)
 	local zhhcode = {}
 	for i = 1, utf8.len(chars) do
 		local char = utf8.sub(chars, i, 1)
-		log.debug("char:" .. char)
-		log.debug("string.len(char):" .. string.len(char))
+		-- log.debug("char:" .. char)
+		-- log.debug("string.len(char):" .. string.len(char))
 		--要寻找的字符串
 		if string.len(char) == 1 then
 			-- 如果就一个字符，比如 a
@@ -74,7 +74,7 @@ function M.getZhhCode(chars, separator)
 			zhhcode[i] = zhh_reverse.patterns[char]
 		end
 	end
-	log.debug("===end zhhcode===")
+	-- log.debug("===end zhhcode===")
 	return table.concat(zhhcode, separator)
 end
 
