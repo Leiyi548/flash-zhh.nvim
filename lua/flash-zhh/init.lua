@@ -48,6 +48,9 @@ end
 
 function M._zh_mode(str)
 	if #str == 1 then
+		if zhh.onepattern[str] == nil then
+			return str
+		end
 		return zhh.onepattern[str]
 	elseif #str <= 4 then
 		if zhh.patterns[str] == nil then
