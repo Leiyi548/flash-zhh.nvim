@@ -60,26 +60,4 @@ function M._zh_mode(str)
 	end
 end
 
-function M._zh_onechar_mode(motion)
-	---@param c string
-	return function(c)
-		c = c:gsub("\\", "\\\\")
-		local pattern ---@type string
-		if motion == "t" then
-			pattern = "\\m.\\ze\\V" .. c
-		elseif motion == "T" then
-			pattern = "\\V" .. c .. "\\zs\\m."
-		else
-			pattern = "\\V" .. c
-		end
-		if not Config.get("char").multi_line then
-			local pos = vim.api.nvim_win_get_cursor(0)
-			pattern = ("\\%%%dl"):format(pos[1]) .. pattern
-		end
-
-		return pattern
-	end
-	-- return zhh.onepattern[motion]
-end
-
 return M
