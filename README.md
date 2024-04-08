@@ -1,7 +1,8 @@
 # flash-zhh.nvim
-
+sx
 ## 为什么叫 flash-zhh.nvim
 
+虎→zhh
 zhh 在虎码中打出来是虎！所以叫 **zhh.nvim**
 
 基于[flash.nvim](https://github.com/Leiyi548/flash.nvim) 和 [虎码](https://tiger-code.com/)，neovim 中文跳转插件。
@@ -68,7 +69,7 @@ return {
 ## 感谢
 
 - [hop-zh-by-flypy](https://github.com/zzhirong/hop-zh-by-flypy)
-- [flash-zh.nvim](https://github.com/rain-zm/flash-zh)
+- [flash-zh.nvim](https://github.com/rainzm/flash-zh.nvim)
 
 ## 推荐输入法
 
