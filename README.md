@@ -1,10 +1,10 @@
 # flash-zhh.nvim
 
-## 为什么叫 zhh.nvim
+## 为什么叫 flash-zhh.nvim
 
 zhh 在虎码中打出来是虎！所以叫 **zhh.nvim**
 
-基于[flash.nvim](https://github.com/folke/flash.nvim) 和 [虎码](https://tiger-code.com/)，neovim 中文跳转插件。
+基于[flash.nvim](https://github.com/Leiyi548/flash.nvim) 和 [虎码](https://tiger-code.com/)，neovim 中文跳转插件。
 
 ![虎码屏示 gif 图](./gif/PixPin_2024-03-31_18-05-48.gif)
 
