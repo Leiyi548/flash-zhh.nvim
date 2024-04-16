@@ -50,7 +50,7 @@ function M:skip1(win, labels)
 			local start_col, end_col = match.pos[2] + 1, match.end_pos[2] + 2
 			local line = lines[1]
 			-- log.debug("line:" .. line)
-			local current_string = string.sub(line, start_col, end_col + 4)
+			local current_string = string.sub(line, start_col, end_col + 1)
 			-- log.debug("current_string:" .. current_string)
 			local py = zhhcode.getZhhCode(current_string, "")
 			-- log.debug("py:" .. py)
