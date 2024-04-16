@@ -1,5 +1,5 @@
 # flash-zhh.nvim
-sx
+
 ## 为什么叫 flash-zhh.nvim
 
 虎→zhh
