@@ -8,7 +8,7 @@ local M = {}
 function M.jump(opts)
 	opts = vim.tbl_deep_extend("force", {
 		-- labels = "123456789;,.[]",
-		labels = "asdfghjklqwertyuiopzxcvbnm",
+		labels = "sdfghjklwertaqyuiopzxcvbnm",
 		search = {
 			mode = M._zh_mode,
 		},
